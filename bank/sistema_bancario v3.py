@@ -1,7 +1,17 @@
 import bcrypt
-import os 
+import os
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+database = 'bd_bank.db'
+nova_engine = create_engine('sqlite:///'+ database)
+Session = sessionmaker(bind=nova_engine)
+sessao = Session()
+
+
 diretorio = os.getcwd()
-print("Diretório:", diretorio)
+print(diretorio)
+
 
 class Usuario:
     def __init__(self, nome, cpf, renda_mensal):
